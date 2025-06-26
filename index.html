@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tashpolatov Bunyod | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .gradient-text {
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .dark .card-hover:hover {
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.05);
+        }
+
+        .skill-bar {
+            height: 8px;
+            border-radius: 4px;
+            background-color: #e5e7eb;
+        }
+
+        .dark .skill-bar {
+            background-color: #374151;
+        }
+
+        .skill-progress {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            transition: width 1s ease-in-out;
+        }
+
+        .toggle-checkbox:checked {
+            right: 0;
+            background-color: #4f46e5;
+        }
+
+        .toggle-checkbox:checked+.toggle-label {
+            background-color: #312e81;
+        }
+
+        .typewriter {
+            display: inline-block;
+            font-family: monospace;
+            overflow: hidden;
+            border-right: .15em solid #3b82f6;
+            white-space: nowrap;
+            width: 9ch;
+            animation: typing 3.5s steps(10), blink-caret .75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 9ch;
+            }
+        }
+
+        @keyframes blink-caret {
+
+            from,
+            to {
+                border-color: transparent;
+            }
+
+            50% {
+                border-color: #3b82f6;
+            }
+        }
+
+
+
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
+    <!-- Header/Navigation -->
+    <header class="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-sm">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="#" class="text-2xl font-bold gradient-text">_tashpolatov_off_</a>
+
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home"
+                        class="text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition">Home</a>
+                    <a href="#about"
+                        class="text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition">About</a>
+                    <a href="#skills"
+                        class="text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition">Skills</a>
+                    <a href="#contact"
+                        class="text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition">Contact</a>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <!-- Dark mode toggle -->
+                    <div class="relative inline-block w-10 mr-2 align-middle select-none">
+                        <input type="checkbox" id="toggle"
+                            class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" />
+                        <label for="toggle"
+                            class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                    </div>
+
+                    <!-- Mobile menu button -->
+                    <button id="mobile-menu-button" class="md:hidden text-gray-700 dark:text-gray-300">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2">
+                <a href="#home"
+                    class="block px-3 py-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800">Home</a>
+                <a href="#about"
+                    class="block px-3 py-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800">About</a>
+                <a href="#skills"
+                    class="block px-3 py-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800">Skills</a>
+                <a href="#contact"
+                    class="block px-3 py-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center px-6">
+        <div class="container mx-auto flex flex-col md:flex-row items-center justify-between">
+            <div class="md:w-1/2 mb-12 md:mb-0">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4 dark:text-white">
+                    Hi, I'm <span class="gradient-text">Bunyod</span>
+                </h1>
+                <h2 class="text-2xl md:text-3xl font-semibold mb-6 dark:text-gray-300 typewriter">
+                    Sigma Boy
+                </h2>
+                <p class="text-gray-600 dark:text-gray-400 mb-8 text-lg">
+                    Passionate about football, volleyball and mastering English.
+                    Born in 2009 with big dreams and determination to achieve them.
+                </p>
+                <div class="flex space-x-4">
+                    <a href="#contact"
+                        class="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full font-medium hover:opacity-90 transition">
+                        Contact Me
+                    </a>
+                    <a href="#about"
+                        class="px-6 py-3 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-full font-medium hover:bg-gray-100 dark:hover:bg-gray-800 transition">
+                        Learn More
+                    </a>
+                </div>
+                <div class="mt-8 flex space-x-6">
+                    <a href="https://t.me/Bunyod_off_2009" target="_blank"
+                        class="text-gray-700 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition">
+                        <i class="fab fa-telegram text-2xl"></i>
+                    </a>
+                    <a href="https://instagram.com/_tashpolatov_off_" target="_blank"
+                        class="text-gray-700 dark:text-gray-400 hover:text-pink-500 dark:hover:text-pink-400 transition">
+                        <i class="fab fa-instagram text-2xl"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div
+                    class="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white dark:border-gray-800 shadow-xl floating">
+                    <img src="photo_2025-06-26_23-42-15.jpg" alt="Bunyod photo" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-50 dark:bg-gray-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 dark:text-white">
+                About <span class="gradient-text">Me</span>
+            </h2>
+
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/3 mb-8 md:mb-0 flex justify-center">
+                    <div
+                        class="relative w-64 h-64 rounded-full overflow-hidden border-4 border-white dark:border-gray-800 shadow-xl floating">
+                        <img src="photo_2025-06-26_23-42-15.jpg" alt="Bunyod photo" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+
+            <div class="md:w-2/3 md:pl-12">
+                <h3 class="text-2xl font-semibold mb-4 dark:text-white">Tashpolatov Bunyod</h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">
+                    Born in 2009, I'm a young and ambitious individual with a passion for sports and languages.
+                    Football and volleyball are not just games for me - they're ways of life that teach teamwork,
+                    discipline, and perseverance.
+                </p>
+                <p class="text-gray-600 dark:text-gray-300 mb-6">
+                    I'm currently focused on improving my English skills to connect with people from different
+                    cultures and expand my horizons. My goal is to become a professional athlete while maintaining
+                    a strong academic foundation.
+                </p>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-sm card-hover">
+                        <div class="flex items-center mb-2">
+                            <div
+                                class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center mr-3">
+                                <i class="fas fa-futbol text-blue-500 dark:text-blue-300"></i>
+                            </div>
+                            <h4 class="font-medium dark:text-white">Football</h4>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm">
+                            Playing since childhood, favorite position is forward. Inspired by Messi's dedication.
+                        </p>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-sm card-hover">
+                        <div class="flex items-center mb-2">
+                            <div
+                                class="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900 flex items-center justify-center mr-3">
+                                <i class="fas fa-volleyball-ball text-purple-500 dark:text-purple-300"></i>
+                            </div>
+                            <h4 class="font-medium dark:text-white">Volleyball</h4>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm">
+                            Developing skills in this dynamic team sport that requires precision and coordination.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 dark:text-white">
+                My <span class="gradient-text">Skills</span>
+            </h2>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Football Skill -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm card-hover">
+                    <div class="flex items-center mb-4">
+                        <div
+                            class="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center mr-4">
+                            <i class="fas fa-futbol text-blue-500 dark:text-blue-300 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold dark:text-white">Football</h3>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        Years of practice in dribbling, shooting, and teamwork. Participated in several local
+                        tournaments.
+                    </p>
+                    <div class="mb-2 flex justify-between">
+                        <span class="text-sm font-medium dark:text-gray-300">Skill Level</span>
+                        <span class="text-sm font-medium dark:text-gray-300">85%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 85%"></div>
+                    </div>
+                </div>
+
+                <!-- Volleyball Skill -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm card-hover">
+                    <div class="flex items-center mb-4">
+                        <div
+                            class="w-12 h-12 rounded-full bg-purple-100 dark:bg-purple-900 flex items-center justify-center mr-4">
+                            <i class="fas fa-volleyball-ball text-purple-500 dark:text-purple-300 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold dark:text-white">Volleyball</h3>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        Developing strong serves and spikes. Good at positioning and quick reactions on the court.
+                    </p>
+                    <div class="mb-2 flex justify-between">
+                        <span class="text-sm font-medium dark:text-gray-300">Skill Level</span>
+                        <span class="text-sm font-medium dark:text-gray-300">75%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 75%"></div>
+                    </div>
+                </div>
+
+                <!-- English Skill -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm card-hover">
+                    <div class="flex items-center mb-4">
+                        <div
+                            class="w-12 h-12 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center mr-4">
+                            <i class="fas fa-language text-green-500 dark:text-green-300 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold dark:text-white">English</h3>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        Actively learning and practicing daily. Focused on conversational skills and vocabulary
+                        building.
+                    </p>
+                    <div class="mb-2 flex justify-between">
+                        <span class="text-sm font-medium dark:text-gray-300">Skill Level</span>
+                        <span class="text-sm font-medium dark:text-gray-300">65%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 65%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 bg-white dark:bg-gray-800 p-8 rounded-xl shadow-sm card-hover">
+                <h3 class="text-xl font-semibold mb-4 dark:text-white">My Sports Philosophy</h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-6">
+                    "Sports have taught me that success comes from consistent effort, teamwork, and never giving up.
+                    Whether it's on the football field, volleyball court, or in language learning, the same principles
+                    apply.
+                    Every missed shot is a chance to improve, every lost game is a lesson, and every small victory
+                    motivates me to aim higher."
+                </p>
+                <div class="flex items-center">
+                    <div
+                        class="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center mr-4">
+                        <i class="fas fa-quote-left text-white"></i>
+                    </div>
+                    <span class="font-medium dark:text-white">Tashpolatov Bunyod</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-50 dark:bg-gray-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 dark:text-white">
+                Get In <span class="gradient-text">Touch</span>
+            </h2>
+
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <h3 class="text-2xl font-semibold mb-4 dark:text-white">Contact Information</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-6">
+                        Feel free to reach out to me through any of these channels. I'm always open to new
+                        opportunities,
+                        sports collaborations, or language exchange.
+                    </p>
+
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <div
+                                class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center mr-4">
+                                <i class="fas fa-envelope text-blue-500 dark:text-blue-300"></i>
+                            </div>
+                            <span class="dark:text-white">bunyod20091103@gmail.com</span>
+                        </div>
+
+                        <div class="flex items-center">
+                            <div
+                                class="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900 flex items-center justify-center mr-4">
+                                <i class="fab fa-telegram text-purple-500 dark:text-purple-300"></i>
+                            </div>
+                            <a href="https://t.me/Bunyod_off_2009" target="_blank"
+                                class="dark:text-white hover:underline">Bunyod_off</a>
+                        </div>
+
+                        <div class="flex items-center">
+                            <div
+                                class="w-10 h-10 rounded-full bg-pink-100 dark:bg-pink-900 flex items-center justify-center mr-4">
+                                <i class="fab fa-instagram text-pink-500 dark:text-pink-300"></i>
+                            </div>
+                            <a href="https://instagram.com/_tashpolatov_off_" target="_blank"
+                                class="dark:text-white hover:underline">tashpolatov_off</a>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="md:w-1/2 md:pl-12">
+                    <form class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-sm">
+                        <h3 class="text-xl font-semibold mb-4 dark:text-white">Send Me a Message</h3>
+
+                        <div class="mb-4">
+                            <label for="name" class="block text-gray-700 dark:text-gray-300 mb-2">Your Name</label>
+                            <input type="text" id="name"
+                                class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 dark:text-white">
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="email" class="block text-gray-700 dark:text-gray-300 mb-2">Your Email</label>
+                            <input type="email" id="email"
+                                class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 dark:text-white">
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="subject" class="block text-gray-700 dark:text-gray-300 mb-2">Subject</label>
+                            <input type="text" id="subject"
+                                class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 dark:text-white">
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="message" class="block text-gray-700 dark:text-gray-300 mb-2">Message</label>
+                            <textarea id="message" rows="4"
+                                class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 dark:text-white"></textarea>
+                        </div>
+
+                        <button type="submit"
+                            class="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white py-3 rounded-lg font-medium hover:opacity-90 transition">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 dark:bg-gray-900 text-white py-8">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <a href="#" class="text-2xl font-bold gradient-text">_tashpolatov_off_</a>
+                    <p class="text-gray-400 mt-2">Sports Enthusiast & Language
+                    <p>
+                </div>
+
+                <div class="flex space-x-6">
+                    <a href="https://t.me/@Bunyod_off_2009" target="_blank"
+                        class="text-gray-400 hover:text-blue-400 transition">
+                        <i class="fab fa-telegram text-xl"></i>
+                    </a>
+                    <a href="https://instagram.com/@_tashpolatov_off_" target="_blank"
+                        class="text-gray-400 hover:text-pink-400 transition">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 Tashpolatov Bunyod. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to top button -->
+    <button id="back-to-top"
+        class="fixed bottom-8 right-8 w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg flex items-center justify-center opacity-0 invisible transition-all">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Dark mode toggle
+        const toggle = document.getElementById('toggle');
+        const html = document.documentElement;
+
+        // Check for saved user preference or use system preference
+        if (localStorage.getItem('darkMode') === 'true' ||
+            (!localStorage.getItem('darkMode') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+            toggle.checked = true;
+        }
+
+        toggle.addEventListener('change', function () {
+            if (this.checked) {
+                html.classList.add('dark');
+                localStorage.setItem('darkMode', 'true');
+            } else {
+                html.classList.remove('dark');
+                localStorage.setItem('darkMode', 'false');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', function () {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+
+        // Back to top button
+        const backToTopButton = document.getElementById('back-to-top');
+
+        window.addEventListener('scroll', function () {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+
+        backToTopButton.addEventListener('click', function () {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Animate skill bars on scroll
+        const skillBars = document.querySelectorAll('.skill-progress');
+
+        function animateSkillBars() {
+            skillBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0';
+
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 100);
+            });
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateSkillBars();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('#skills').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+
+</html>
